@@ -16,13 +16,15 @@ fetch("http://localhost:5678/api/works")
         const imageElement = document.createElement("img");
         imageElement.src = figure.imageUrl;
         const titleElement = document.createElement("figcaption");
-        titleElement.src = figure.title;
+        titleElement.innerText = figure.title;
         
         // On rattache la balise figure à la section Gallery
         sectionGallery.appendChild(workElement);
-        // On rattacge l'image à workElement (la balise figure)
+        // On rattacge l'image et le titre à workElement (la balise figure)
         workElement.appendChild(imageElement);
         workElement.appendChild(titleElement);
 
+        console.log(titleElement)
     }
+    
 }) ;
