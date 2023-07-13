@@ -97,6 +97,7 @@ nav ul {
 nav li {
     font-size: 1.2em;
     font-weight: 500;
+    cursor: pointer;
 }
 nav li:nth-child(3) {
     padding: 0 10px;
@@ -183,54 +184,81 @@ li:hover {
     margin-top: 7px;
 }
 
-#contact {
+#contact, #login {
     width: 33.246%;
     margin: auto;
     margin-top: 57px;
 }
-#contact > * {
+#login {
+    margin-top: 150px;
+}
+#contact > *,
+#login > * {
     text-align: center;
 }
-#contact h2 {
+#contact h2,
+#login h2 {
     margin-bottom: 9px;
 }
-#contact p {
+#login h2 {
+    margin: 0;
+}
+#contact p,
+#login p {
     font-size: 16px;
 }
-#contact form {
+#contact form,
+#login form {
     text-align: left;
     display: flex;
     flex-direction: column;
 }
-#contact input {
+#contact input,
+#login input {
     height: 36px;
     font-size: 1em;
     border: none;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
-    margin: 2.5em 0 1em 0;
+#contact label,
+#login label {
+    margin: 37px 0 8px 0;
     font-weight: 500;
 }
-#contact textarea {
+#contact textarea,
+#login textarea {
     border: none;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
     resize: none;
 }
-
-input[type="submit"] {
+#login a {
+    text-align: center;
+    color: #3d3d3d;
+    font-weight: 600;
+}
+#contact input[type="submit"],
+#login input[type="submit"] {
     font-family: "Syne";
     font-weight: 700;
     color: white;
     background-color: #1d6154;
-    margin: 3em auto;
+    margin: 40px auto 45px auto;
     width: 180px;
     text-align: center;
     border-radius: 60px;
+    cursor: pointer;
+}
+#login input[type="submit"] {
+    margin: 37px auto 28px auto;
 }
 
-footer nav ul {
+.legal-notice-1,
+.legal-notice-2
+ {
     display: flex;
     justify-content: flex-end;
     margin: 2em 0;
+}
+.legal-notice-2 {
+    margin-top: 360px;
 }
