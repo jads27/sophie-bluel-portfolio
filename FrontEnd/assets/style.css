@@ -1,7 +1,7 @@
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
-   License: none (public domain)
-*/
+   License: none (public domain) 
+   */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -16,220 +16,221 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
-blockquote:before, blockquote:after,
+blockquote:before, blockquote:after, 
 q:before, q:after {
-	content: '';
-	content: none;
+    content: "";
+    content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
-	font-size: 14px;
-	background-color: #FFFEF8;
+    max-width: 1140px;
+    margin: auto;
+    font-family: "Work Sans";
+    font-size: 14px;
+    background-color: #fffef8;
 }
 
 header {
-	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
 }
 
 section {
-	margin: 50px 0
+    margin: 50px 0;
 }
 
-h1{
-	display: flex;
-	flex-direction: column;
-	font-family: 'Syne';
-	font-size: 22px;
-	font-weight: 800;
-	color: #B1663C
+h1 {
+    display: flex;
+    flex-direction: column;
+    font-family: "Syne";
+    font-size: 22px;
+    font-weight: 800;
+    color: #b1663c;
 }
 h1 > span {
-	font-family: 'Work Sans';
-	font-size: 10px;
-	letter-spacing: 0.1em;
-	font-weight: 400;
-	text-transform: uppercase;
-	margin-top: 5px;
-	;
+    font-family: "Work Sans";
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 5px;
 }
 
 h2 {
-	font-family: 'Syne';
-	font-weight: 700;
-	font-size: 30px;
-	color: #1D6154
+    font-family: "Syne";
+    font-weight: 700;
+    font-size: 30px;
+    color: #1d6154;
 }
 nav ul {
-	display: flex;
-	align-items: center;
-	list-style-type: none;
-	gap: 44px;	
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 44px;
 }
 nav li {
-	font-size: 1.2em;
-	font-weight: 500;
+    font-size: 1.2em;
+    font-weight: 500;
 }
 nav li:nth-child(3) {
-	padding: 0 10px
+    padding: 0 10px;
 }
 
 li img {
-	width: 22px;
-	height: 22px;
+    width: 22px;
+    height: 22px;
 }
 li:hover {
-	color: #B1663C;
+    color: #b1663c;
 }
 
 #introduction {
-	display: flex;
-	align-items: center;
-	margin: 139px 95px;
-	gap: 72px;
+    display: flex;
+    align-items: center;
+    margin: 139px 95px;
+    gap: 72px;
 }
 #introduction figure {
-	flex: 1
+    flex: 1;
 }
 #introduction img {
-	display: block;
-	margin: auto;
-	width: 100%;
+    display: block;
+    margin: auto;
+    width: 100%;
 }
 #introduction article {
-	flex: 1
+    flex: 1;
 }
 #introduction h2 {
-	margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 #introduction p {
-	margin-bottom: 1.3em;
-	width: 404px;
+    margin-bottom: 1.3em;
+    width: 404px;
 }
 
 #portfolio {
-	margin: 0 95px
+    margin: 0 95px;
 }
 #portfolio h2 {
-	text-align: center;
-	margin-bottom: 51px;
+    text-align: center;
+    margin-bottom: 51px;
 }
 
 .filters {
-	display: flex;
-	justify-content: center;
-	gap: 10px;
-	margin-bottom: 51px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 51px;
 }
 .filters button {
-	border-radius: 60px;
-	border: 1px solid #1D6154;
-	background: #FFF;
-	height: 37px;
-	font-size: 16px;
-	color: #1D6154;
-	font-family: Syne;
-	font-weight: 700;
-	padding: 9px 20px ;
+    border-radius: 60px;
+    border: 1px solid #1d6154;
+    background: #fff;
+    height: 37px;
+    font-size: 16px;
+    color: #1d6154;
+    font-family: Syne;
+    font-weight: 700;
+    padding: 9px 20px;
 }
+.filters .active {
+    background: #1d6154;
+    color: #fff;
+}
+
 .filters button:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .gallery {
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
 }
 .gallery img {
-	width: 100%;
+    width: 100%;
 }
 .gallery figcaption {
-	margin-top: 7px;
+    margin-top: 7px;
 }
 
 #contact {
-	width: 33.246%;
-	margin: auto;
-	margin-top: 57px;
+    width: 33.246%;
+    margin: auto;
+    margin-top: 57px;
 }
 #contact > * {
-	text-align: center;
+    text-align: center;
 }
-#contact h2{
-	margin-bottom: 9px;
+#contact h2 {
+    margin-bottom: 9px;
 }
 #contact p {
-	font-size: 16px;
+    font-size: 16px;
 }
 #contact form {
-	text-align: left;
-	
-	display: flex;
-	flex-direction: column;
-	
+    text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 #contact input {
-	height: 36px;
-	font-size: 1em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    height: 36px;
+    font-size: 1em;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 #contact label {
-	margin: 2.5em 0 1em 0;
-	font-weight: 500;
+    margin: 2.5em 0 1em 0;
+    font-weight: 500;
 }
 #contact textarea {
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	resize: none;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    resize: none;
 }
 
 input[type="submit"] {
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 3em auto ;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
+    font-family: "Syne";
+    font-weight: 700;
+    color: white;
+    background-color: #1d6154;
+    margin: 3em auto;
+    width: 180px;
+    text-align: center;
+    border-radius: 60px;
 }
 
 footer nav ul {
-	display: flex;
-	justify-content: flex-end;
-	margin: 2em 0
+    display: flex;
+    justify-content: flex-end;
+    margin: 2em 0;
 }
-
