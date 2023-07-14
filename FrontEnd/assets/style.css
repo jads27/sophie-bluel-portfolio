@@ -34,6 +34,12 @@ body {
 ol, ul {
     list-style: none;
 }
+
+a {
+    text-decoration: none;  
+    color: inherit;
+}
+
 blockquote, q {
     quotes: none;
 }
@@ -66,14 +72,17 @@ section {
 }
 
 h1 {
-    display: flex;
-    flex-direction: column;
     font-family: "Syne";
     font-size: 22px;
     font-weight: 800;
     color: #b1663c;
+    cursor: pointer;
 }
-h1 > span {
+h1 > a {
+    display: flex;
+    flex-direction: column;
+}
+h1 > a > span {
     font-family: "Work Sans";
     font-size: 10px;
     letter-spacing: 0.1em;
@@ -250,6 +259,9 @@ li:hover {
 }
 #login input[type="submit"] {
     margin: 37px auto 28px auto;
+}
+#login > form > a {
+    text-decoration: underline; 
 }
 
 .legal-notice-1,
