@@ -58,12 +58,39 @@ button {
     background: none;
     font: inherit;
     text-align: start;
-     padding: 0;
+    padding: 0;
+    cursor: pointer;
 }
 /** end reset css**/
 .fa-pen-to-square {
     color: #000000;
     margin-right: 10.42px;
+    font-size: 16px;
+}
+.fa-xmark {
+    font-size: 18px;
+}
+
+input[type="submit"], 
+input[type="submit"] {
+    font-family: "Syne";
+    font-weight: 700;
+    font-size: 1em;
+    color: white;
+    background-color: #1d6154;
+    margin: 40px auto 45px auto;
+    width: 180px;
+    height: 36px;
+    text-align: center;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+}
+
+#introduction > button ,
+#portfolio > div:first-child > button 
+{
+    width: 19.5%;
 }
 
 body {
@@ -78,6 +105,57 @@ header {
     display: flex;
     justify-content: space-between;
     margin: 50px 0;
+}
+
+h3 {
+    font-size: 26px;
+    font-family: "Work Sans";
+    text-align: center;
+}
+
+.modal {
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0000004d;
+}
+.modal-wrapper {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    width: 630px;
+    height: 660px;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    background-color: #fff;
+    border-radius: 10px;
+}
+.modal-wrapper h3 {
+    margin: 10px auto 46px auto;
+}
+.modal-wrapper hr {
+    color: #b3b3b3;
+    width: 420px;
+}
+.modal-wrapper input {
+    width: 237px;
+    margin-bottom: 23px;
+}
+.modal-wrapper button:first-child {
+    align-self: flex-end;
+    margin: 24px 30px 0 0;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+}
+.modal-wrapper button:last-child {
+    color: #d65353;
+    text-align: center;
 }
 
 section {
@@ -104,12 +182,6 @@ h1 > a > span {
     margin-top: 5px;
 }
 
-h2 {
-    font-family: "Syne";
-    font-weight: 700;
-    font-size: 30px;
-    color: #1d6154;
-}
 nav ul {
     display: flex;
     align-items: center;
@@ -131,6 +203,13 @@ li img {
 }
 li:hover {
     color: #b1663c;
+}
+
+h2 {
+    font-family: "Syne";
+    font-weight: 700;
+    font-size: 30px;
+    color: #1d6154;
 }
 
 #introduction {
@@ -191,17 +270,13 @@ li:hover {
     height: 37px;
     font-size: 16px;
     color: #1d6154;
-    font-family: Syne;
+    font-family: "Syne";
     font-weight: 700;
     padding: 9px 20px;
 }
 .filters .active {
     background: #1d6154;
     color: #fff;
-}
-
-.filters button:hover {
-    cursor: pointer;
 }
 
 .gallery {
@@ -225,6 +300,7 @@ li:hover {
 }
 #login {
     margin-top: 150px;
+    text-align: center;
 }
 #contact > *, 
 #login > * {
@@ -269,25 +345,15 @@ li:hover {
     text-align: center;
     color: #3d3d3d;
     font-weight: 600;
+    text-decoration: underline;
 }
-#contact input[type="submit"], 
-#login input[type="submit"] {
-    font-family: "Syne";
-    font-weight: 700;
-    color: white;
-    background-color: #1d6154;
-    margin: 40px auto 45px auto;
-    width: 180px;
-    text-align: center;
-    border-radius: 60px;
-    cursor: pointer;
+#login a:hover {
+    text-decoration: none;
 }
 #login input[type="submit"] {
     margin: 37px auto 28px auto;
 }
-#login > form > a {
-    text-decoration: underline; 
-}
+
 
 .legal-notice-1, 
 .legal-notice-2

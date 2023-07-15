@@ -36,6 +36,15 @@
                 </ul>
             </nav>
         </header>
+        <aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-wrapper">
+            <div class="modal-wrapper modal-stop">
+                <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+                <h3 id="modal-title">Galerie photo</h3>
+                <hr />
+                <input type="submit" value="Ajouter une photo" />
+                <button>Supprimer la galerie</button>
+            </div>
+        </aside>
         <main>
             <section id="introduction">
                 <figure>
@@ -54,12 +63,12 @@
                     </p>
                     <p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
                 </article>
-                <button><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+                <button class="modal-open"><i class="fa-regular fa-pen-to-square"></i><span>modifier</span></button>
             </section>
             <section id="portfolio">
                 <div>
                     <h2>Mes projets</h2>
-                    <button><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+                    <button class="modal-open"><i class="fa-regular fa-pen-to-square"></i><span>modifier</span></button>
                 </div>
                 <div class="filters"></div>
                 <div class="gallery"></div>
@@ -86,5 +95,6 @@
             </nav>
         </footer>
         <script src="works.js"></script>
+        <script src="modal.js"></script>
     </body>
 </html>
