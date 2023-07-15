@@ -52,7 +52,20 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+button {
+    border: none;
+    background: none;
+    font: inherit;
+    text-align: start;
+     padding: 0;
+}
 /** end reset css**/
+.fa-pen-to-square {
+    color: #000000;
+    margin-right: 10.42px;
+}
+
 body {
     max-width: 1140px;
     margin: auto;
@@ -121,10 +134,10 @@ li:hover {
 }
 
 #introduction {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
-    margin: 139px 95px;
-    gap: 72px;
+    margin: 92px 10% 108px 10%;
 }
 #introduction figure {
     flex: 1;
@@ -136,21 +149,33 @@ li:hover {
 }
 #introduction article {
     flex: 1;
+    margin-left: 72px;
 }
 #introduction h2 {
     margin-bottom: 1em;
 }
-#introduction p {
+#introduction > article > p {
     margin-bottom: 1.3em;
     width: 404px;
+    color: #3d3d3d;
+}
+#introduction button {
+    margin-top: 15px;
 }
 
 #portfolio {
     margin: 0 95px;
 }
-#portfolio h2 {
-    text-align: center;
+#portfolio > div > h2 {
+    margin-right: 31px;
+    
+}
+#portfolio > div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 51px;
+    margin-right: -107.78px;
 }
 
 .filters {
@@ -201,7 +226,7 @@ li:hover {
 #login {
     margin-top: 150px;
 }
-#contact > *,
+#contact > *, 
 #login > * {
     text-align: center;
 }
@@ -245,7 +270,7 @@ li:hover {
     color: #3d3d3d;
     font-weight: 600;
 }
-#contact input[type="submit"],
+#contact input[type="submit"], 
 #login input[type="submit"] {
     font-family: "Syne";
     font-weight: 700;
@@ -264,7 +289,7 @@ li:hover {
     text-decoration: underline; 
 }
 
-.legal-notice-1,
+.legal-notice-1, 
 .legal-notice-2
  {
     display: flex;
