@@ -56,7 +56,7 @@ const filterWorks = (categoryId) => {
 const createWorkElement = (work, container) => {
     const workElement = document.createElement("figure");
     if (container === galleryModal) {
-        workElement.innerHTML = `<img src="${work.imageUrl}" /><button>éditer</button>`;
+        workElement.innerHTML = `<img src="${work.imageUrl}" /><button class="trash-btn"><i class="fa-solid fa-trash-can"></i></button><button class="edit-btn">éditer</button>`;
     } else {
         workElement.innerHTML = `<img src="${work.imageUrl}" /><figcaption>${work.title}</figcaption>`;
     }

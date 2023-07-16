@@ -87,12 +87,6 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-#introduction > button ,
-#portfolio > div:first-child > button 
-{
-    width: 19.5%;
-}
-
 body {
     max-width: 1140px;
     margin: auto;
@@ -168,7 +162,26 @@ h3 {
     grid-row-gap: 12.57px;
     margin: 45px 105px;
 }
-.modal-gallery button {
+.modal-gallery figure {
+    position: relative;
+    display: inline-block;
+}
+.modal-gallery .trash-btn {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    margin: 6.43px 4.86px 0 0;
+    background: #000000;
+    border-radius: 2px;
+    text-align: center;
+}
+.modal-gallery .trash-btn .fa-trash-can {
+    color: #ffffff;  
+    opacity: 0.95;
+}
+.modal-gallery .edit-btn {
     color: #000000;
     margin-top: 3px;
 }
@@ -257,8 +270,9 @@ h2 {
     width: 404px;
     color: #3d3d3d;
 }
-#introduction button {
+#introduction .modal-open {
     margin-top: 15px;
+    width: 19.194%;
 }
 
 #portfolio {
@@ -272,8 +286,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 51px;
-    margin-right: -107.78px;
+    margin: auto -107.78px 51px auto;
 }
 
 .filters {
