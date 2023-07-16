@@ -1,3 +1,4 @@
+const galleryModal = document.querySelector(".modal-gallery");
 let modal = null;
 
 const openModal = () => {
@@ -9,6 +10,10 @@ const openModal = () => {
     modal.addEventListener("click", closeModal);
     modal.querySelector(".modal-close").addEventListener("click", closeModal);
     modal.querySelector(".modal-stop").addEventListener("click", stopPropagation);
+
+    allWorks.forEach((work) => {
+        createWorkElement(work, galleryModal);
+    });
 };
 
 const closeModal = () => {
@@ -20,6 +25,7 @@ const closeModal = () => {
     modal.querySelector(".modal-close").removeEventListener("click", closeModal);
     modal.querySelector(".modal-stop").removeEventListener("click", stopPropagation);
     modal = null;
+    galleryModal.innerHTML = "";
 };
 
 const stopPropagation = (e) => {

@@ -43,18 +43,22 @@ const filterWorks = (categoryId) => {
 
     if (categoryId === "all") {
         allWorks.forEach((work) => {
-            createWorkElement(work);
+            createWorkElement(work, gallerySection);
         });
     } else {
         const filteredWorks = allWorks.filter((work) => work.categoryId === categoryId);
         filteredWorks.forEach((work) => {
-            createWorkElement(work);
+            createWorkElement(work, gallerySection);
         });
     }
 };
 
-const createWorkElement = (work) => {
+const createWorkElement = (work, container) => {
     const workElement = document.createElement("figure");
-    workElement.innerHTML = `<img src="${work.imageUrl}" /><figcaption>${work.title}</figcaption>`;
-    gallerySection.appendChild(workElement);
+    if (container === galleryModal) {
+        workElement.innerHTML = `<img src="${work.imageUrl}" /><button>éditer</button>`;
+    } else {
+        workElement.innerHTML = `<img src="${work.imageUrl}" /><figcaption>${work.title}</figcaption>`;
+    }
+    container.appendChild(workElement);
 };
