@@ -71,6 +71,10 @@ button {
     font-size: 18px;
 }
 
+.login {
+    font-weight: 600;
+}
+
 input[type="submit"], 
 input[type="submit"] {
     font-family: "Syne";
