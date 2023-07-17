@@ -25,14 +25,18 @@ const openModal = () => {
 const closeModal = () => {
     if (modal === null) return;
     if (previouslyFocusedElement !== null) previouslyFocusedElement.focus();
-    modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
     modal.removeAttribute("aria-modal");
     modal.removeEventListener("click", closeModal);
     modal.querySelector(".modal-close").removeEventListener("click", closeModal);
     modal.querySelector(".modal-stop").removeEventListener("click", stopPropagation);
-    modal = null;
-    galleryModal.innerHTML = "";
+    const hideModal = () => {
+        modal.style.display = "none";
+        modal.removeEventListener("animationend", hideModal);
+        modal = null;
+        galleryModal.innerHTML = "";
+    };
+    modal.addEventListener("animationend", hideModal);
 };
 
 const stopPropagation = (e) => {
