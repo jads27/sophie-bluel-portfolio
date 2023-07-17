@@ -11,44 +11,46 @@
         <link rel="stylesheet" href="./assets/style.css" />
     </head>
     <body>
-        <header>
-            <h1>
-                <a href="index.html">
-                    Sophie Bluel
-                    <span>Architecte d'intérieur</span>
-                </a>
-            </h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html#portfolio">projets</a></li>
-                    <li><a href="index.html#contact">contact</a></li>
-                    <li><a href="login.html" class="login">login</a></li>
-                    <li>
-                        <img src="./assets/icons/instagram.png" alt="Instagram" />
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section id="login">
-                <h2>Log in</h2>
-                <form action="#" method="post">
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" />
-                    <label for="password">Mot de passe</label>
-                    <input type="password" name="password" id="password" />
-                    <input type="submit" value="Se connecter" />
-                </form>
-                <a href="#">Mot de passe oublié</a>
-            </section>
-        </main>
-        <footer>
-            <nav>
-                <ul class="legal-notice-2">
-                    <li>Mentions Légales</li>
-                </ul>
-            </nav>
-        </footer>
+        <div class="main-container">
+            <header>
+                <h1>
+                    <a href="index.html">
+                        Sophie Bluel
+                        <span>Architecte d'intérieur</span>
+                    </a>
+                </h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html#portfolio">projets</a></li>
+                        <li><a href="index.html#contact">contact</a></li>
+                        <li><a href="login.html" class="login active">login</a></li>
+                        <li>
+                            <img src="./assets/icons/instagram.png" alt="Instagram" />
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <main>
+                <section id="login">
+                    <h2>Log in</h2>
+                    <form action="#" method="post">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" id="email" />
+                        <label for="password">Mot de passe</label>
+                        <input type="password" name="password" id="password" />
+                        <input type="submit" value="Se connecter" />
+                    </form>
+                    <a href="#">Mot de passe oublié</a>
+                </section>
+            </main>
+            <footer>
+                <nav>
+                    <ul class="legal-notice-2">
+                        <li>Mentions Légales</li>
+                    </ul>
+                </nav>
+            </footer>
+        </div>
         <script src="login.js"></script>
     </body>
 </html>
