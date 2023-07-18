@@ -79,7 +79,6 @@ button {
     to {transform: translateY(50px);}
 }
 
-
 .fa-pen-to-square {
     color: #000000;
     margin-right: 10.42px;
@@ -87,6 +86,10 @@ button {
 }
 .fa-xmark {
     font-size: 18px;
+}
+.fa-trash-can {
+color: #ffffff;  
+opacity: 0.95;
 }
 
 .active {
@@ -216,6 +219,9 @@ h3 {
 }
 .modal-gallery .trash-btn {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 20px;
     height: 20px;
     top: 0;
@@ -224,10 +230,6 @@ h3 {
     background: #000000;
     border-radius: 2px;
     text-align: center;
-}
-.modal-gallery .trash-btn .fa-trash-can {
-    color: #ffffff;  
-    opacity: 0.95;
 }
 .modal-gallery .edit-btn {
     color: #000000;
@@ -302,7 +304,7 @@ h2 {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    margin: 92px 10% 108px 10%;
+    margin: 100px 10% 50px 10%;
 }
 #introduction figure {
     flex: 1;
@@ -331,6 +333,7 @@ h2 {
 
 #portfolio {
     margin: 0 95px;
+    padding-top: 50px;
 }
 #portfolio > div:first-child {
     display: flex;
@@ -449,4 +452,8 @@ h2 {
 }
 .legal-notice-2 {
     margin-top: 360px;
+}
+
+.unauthenticated {
+    display: none;
 }

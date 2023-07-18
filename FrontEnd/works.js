@@ -1,33 +1,43 @@
 const gallerySection = document.querySelector(".gallery");
 const filtersSection = document.querySelector(".filters");
 let allWorks = [];
+const editorBarElement = document.querySelector(".editor-bar");
+const loginNav = document.querySelector(".login");
+const openModalElement = document.querySelectorAll(".modal-open");
+let token = null;
+
+const isTokenPresent = () => {
+    return localStorage.getItem("token");
+};
 
 fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())
     .then((data) => {
-        const allFilterButton = document.createElement("button");
-        allFilterButton.innerText = "Tous";
-        allFilterButton.classList.add("active");
-        filtersSection.appendChild(allFilterButton);
-
-        allFilterButton.addEventListener("click", () => {
-            const categoryButtons = document.querySelectorAll(".filters .active");
-            categoryButtons.forEach((button) => button.classList.remove("active"));
+        if (!isTokenPresent()) {
+            const allFilterButton = document.createElement("button");
+            allFilterButton.innerText = "Tous";
             allFilterButton.classList.add("active");
-            filterWorks("all");
-        });
+            filtersSection.appendChild(allFilterButton);
 
-        data.forEach((category) => {
-            const filterButtons = document.createElement("button");
-            filterButtons.innerText = category.name;
-            filtersSection.appendChild(filterButtons);
-
-            filterButtons.addEventListener("click", () => {
+            allFilterButton.addEventListener("click", () => {
                 const categoryButtons = document.querySelectorAll(".filters .active");
                 categoryButtons.forEach((button) => button.classList.remove("active"));
-                filterButtons.classList.add("active");
-                filterWorks(category.id);
+                allFilterButton.classList.add("active");
+                filterWorks("all");
             });
+        }
+        data.forEach((category) => {
+            if (!isTokenPresent()) {
+                const filterButtons = document.createElement("button");
+                filterButtons.innerText = category.name;
+                filtersSection.appendChild(filterButtons);
+                filterButtons.addEventListener("click", () => {
+                    const categoryButtons = document.querySelectorAll(".filters .active");
+                    categoryButtons.forEach((button) => button.classList.remove("active"));
+                    filterButtons.classList.add("active");
+                    filterWorks(category.id);
+                });
+            }
         });
     });
 
@@ -46,10 +56,12 @@ const filterWorks = (categoryId) => {
             createWorkElement(work, gallerySection);
         });
     } else {
-        const filteredWorks = allWorks.filter((work) => work.categoryId === categoryId);
-        filteredWorks.forEach((work) => {
-            createWorkElement(work, gallerySection);
-        });
+        if (!isTokenPresent()) {
+            const filteredWorks = allWorks.filter((work) => work.categoryId === categoryId);
+            filteredWorks.forEach((work) => {
+                createWorkElement(work, gallerySection);
+            });
+        }
     }
 };
 
@@ -62,3 +74,19 @@ const createWorkElement = (work, container) => {
     }
     container.appendChild(workElement);
 };
+
+if (isTokenPresent()) {
+    token = localStorage.getItem("token");
+    editorBarElement.classList.remove("unauthenticated");
+    loginNav.innerText = "logout";
+
+    openModalElement.forEach((element) => element.classList.remove("unauthenticated"));
+    modal.classList.remove("unauthenticated");
+
+    loginNav.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("token", token);
+        location.reload();
+    });
+    filtersSection.style.display = "none";
+}
