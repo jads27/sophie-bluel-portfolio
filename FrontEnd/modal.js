@@ -71,3 +71,35 @@ window.addEventListener("keydown", (e) => {
         focusInModal(e);
     }
 });
+
+galleryModal.addEventListener("click", (e) => {
+    if (e.target.classList.contains("fa-trash-can")) {
+        const figure = e.target.closest("figure");
+        const figureIndex = Array.from(figure.parentElement.children).indexOf(figure);
+        const workId = allWorks[figureIndex].id;
+        fetch(`http://localhost:5678/api/works/${workId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    const updatedWorks = allWorks.filter((work) => work.id !== workId);
+                    allWorks = updatedWorks;
+                    galleryModal.innerHTML = "";
+                    gallerySection.innerHTML = "";
+                    updatedWorks.forEach((work) => {
+                        createWorkElement(work, galleryModal);
+                        createWorkElement(work, gallerySection);
+                    });
+                } else {
+                    throw new Error("Error occurred while deleting the element");
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error.message);
+                alert("Erreur lors de la suppression de l'élément");
+            });
+    }
+});
