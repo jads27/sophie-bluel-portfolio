@@ -81,9 +81,7 @@ const focusInModal = (e) => {
     focusablesElements[index].focus();
 };
 
-document.querySelectorAll(".modal-open").forEach((button) => {
-    button.addEventListener("click", openModal);
-});
+document.querySelector(".edit-gallery").addEventListener("click", openModal);
 
 window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" || e.key === "Esc") {
