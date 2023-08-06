@@ -5,6 +5,10 @@ let focusablesElements = [];
 let previouslyFocusedElement = null;
 const modal1 = document.querySelector("aside div:nth-child(1)");
 const modal2 = document.querySelector("aside div:nth-child(2)");
+const submitInput = document.getElementById("submit");
+const titleInput = document.getElementById("title");
+const categorySelect = document.getElementById("category");
+const fileInput = document.getElementById("file");
 
 const openModal = () => {
     modal = document.querySelector(".modal");
@@ -29,7 +33,6 @@ const openModal = () => {
         modal.querySelectorAll(".modal-wrapper").forEach((element) => element.classList.add("no-animation"));
         focusablesElements = Array.from(modal2.querySelectorAll(focusableSelector));
         focusablesElements[0].focus();
-        console.log(focusablesElements);
     });
     modal.querySelector(".modal1-back").addEventListener("click", () => {
         modal2.style.display = "none";
@@ -81,6 +84,24 @@ const focusInModal = (e) => {
     focusablesElements[index].focus();
 };
 
+const checkFormValidity = () => {
+    const file = fileInput.files[0];
+    const title = titleInput.value;
+    const category = categorySelect.value;
+
+    const isFileValid = file && file.size <= 4 * 1024 * 1024;
+    const isTitleValid = title !== "";
+    const isCategoryValid = category !== "";
+
+    const isFormValid = isTitleValid && isCategoryValid && isFileValid;
+
+    if (isFormValid) {
+        submitInput.disabled = false;
+    } else {
+        submitInput.disabled = true;
+    }
+};
+
 document.querySelector(".edit-gallery").addEventListener("click", openModal);
 
 window.addEventListener("keydown", (e) => {
@@ -123,3 +144,31 @@ galleryModal.addEventListener("click", (e) => {
             });
     }
 });
+
+submitInput.addEventListener("click", () => {
+    const file = fileInput.files[0];
+    const title = titleInput.value;
+    const category = parseInt(categorySelect.value);
+
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("title", title);
+    formData.append("category", category);
+
+    fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+    }).catch((error) => {
+        console.error("Error:", error);
+        alert("Erreur lors de l'ajout de l'élément");
+    });
+});
+
+fileInput.addEventListener("change", checkFormValidity);
+titleInput.addEventListener("input", checkFormValidity);
+categorySelect.addEventListener("change", checkFormValidity);
+
+checkFormValidity();

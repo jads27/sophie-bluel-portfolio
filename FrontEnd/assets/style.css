@@ -216,6 +216,9 @@ h3 {
     min-height: 36px;
     margin-bottom: 23px;
 }
+.modal-wrapper input[disabled] {
+  background-color: gray;
+}
 .modal-wrapper .modal-header {
     display: flex;
     justify-content: space-between;
@@ -406,7 +409,7 @@ h2 {
 }
 #introduction .modal-open {
     margin-top: 15px;
-    width: 19.194%;
+    width: 20%;
 }
 
 #portfolio {
@@ -533,7 +536,7 @@ h2 {
     margin: 2em 0;
 }
 .legal-notice-2 {
-    margin-top: 350px;
+    margin-top: 361px;
 }
 
 .unauthenticated {
