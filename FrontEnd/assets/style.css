@@ -208,7 +208,6 @@ h3 {
 .modal-wrapper .delete-btn {
     align-self: center;
     text-align: center;
-    width: none;
     min-height: 20px;
     color: #d65353;
 }

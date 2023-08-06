@@ -30,6 +30,7 @@ const openModal = () => {
     modal.querySelector(".modal2-open").addEventListener("click", () => {
         modal1.style.display = "none";
         modal2.style.display = "flex";
+        modal.setAttribute("aria-labelledby", "modal2");
         modal.querySelectorAll(".modal-wrapper").forEach((element) => element.classList.add("no-animation"));
         focusablesElements = Array.from(modal2.querySelectorAll(focusableSelector));
         focusablesElements[0].focus();
@@ -37,6 +38,7 @@ const openModal = () => {
     modal.querySelector(".modal1-back").addEventListener("click", () => {
         modal2.style.display = "none";
         modal1.style.display = "flex";
+        modal.setAttribute("aria-labelledby", "modal1");
         modal.querySelectorAll(".modal-wrapper").forEach((element) => element.classList.add("no-animation"));
         focusablesElements = Array.from(modal1.querySelectorAll(focusableSelector));
         modal.querySelector(".modal2-open").focus();
