@@ -161,10 +161,23 @@ submitInput.addEventListener("click", () => {
             Authorization: `Bearer ${token}`,
         },
         body: formData,
-    }).catch((error) => {
-        console.error("Error:", error);
-        alert("Erreur lors de l'ajout de l'élément");
-    });
+    })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Error occured when adding the element");
+            }
+        })
+        .then((data) => {
+            allWorks.push(data);
+            createWorkElement(data, galleryModal);
+            createWorkElement(data, gallerySection);
+        })
+        .catch((error) => {
+            console.error("Error:", error.message);
+            alert("Erreur lors de l'ajout de l'élément");
+        });
 });
 
 fileInput.addEventListener("change", checkFormValidity);
