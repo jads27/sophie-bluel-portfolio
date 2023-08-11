@@ -9,6 +9,8 @@ const submitInput = document.getElementById("submit");
 const titleInput = document.getElementById("title");
 const categorySelect = document.getElementById("category");
 const fileInput = document.getElementById("file");
+const fileWrapper = document.querySelector(".file-wrapper");
+const imgWrapper = document.querySelector(".img-wrapper");
 
 const openModal = () => {
     modal = document.querySelector(".modal");
@@ -27,21 +29,22 @@ const openModal = () => {
     modal.addEventListener("click", closeModal);
     modal.querySelectorAll(".modal-close").forEach((element) => element.addEventListener("click", closeModal));
     modal.querySelectorAll(".modal-stop").forEach((element) => element.addEventListener("click", stopPropagation));
-    modal.querySelector(".modal2-open").addEventListener("click", () => {
+    modal.querySelector(".modal-2-open").addEventListener("click", () => {
         modal1.style.display = "none";
         modal2.style.display = "flex";
-        modal.setAttribute("aria-labelledby", "modal2");
+        modal.setAttribute("aria-labelledby", "modal-2");
         modal.querySelectorAll(".modal-wrapper").forEach((element) => element.classList.add("no-animation"));
         focusablesElements = Array.from(modal2.querySelectorAll(focusableSelector));
         focusablesElements[0].focus();
     });
-    modal.querySelector(".modal1-back").addEventListener("click", () => {
+    modal.querySelector(".modal-1-back").addEventListener("click", () => {
         modal2.style.display = "none";
         modal1.style.display = "flex";
-        modal.setAttribute("aria-labelledby", "modal1");
+        modal.setAttribute("aria-labelledby", "modal-1");
         modal.querySelectorAll(".modal-wrapper").forEach((element) => element.classList.add("no-animation"));
         focusablesElements = Array.from(modal1.querySelectorAll(focusableSelector));
-        modal.querySelector(".modal2-open").focus();
+        modal.querySelector(".modal-2-open").focus();
+        resetSubmitFile();
     });
     focusablesElements[0].focus();
 };
@@ -62,6 +65,7 @@ const closeModal = () => {
         modal.removeEventListener("animationend", hideModal);
         modal = null;
         galleryModal.innerHTML = "";
+        resetSubmitFile();
     };
     modal.addEventListener("animationend", hideModal);
 };
@@ -97,9 +101,26 @@ const checkFormValidity = () => {
 
     const isFormValid = isTitleValid && isCategoryValid && isFileValid;
 
+    if (isFileValid) {
+        const imgPreview = `<img src="${URL.createObjectURL(file)}" alt="Image preview" />`;
+        imgWrapper.style.display = "flex";
+        fileWrapper.style.display = "none";
+        imgWrapper.innerHTML = imgPreview;
+    }
+
     if (isFormValid) {
         submitInput.disabled = false;
     } else {
+        submitInput.disabled = true;
+    }
+};
+
+const resetSubmitFile = () => {
+    if (modal2.style.display !== "flex") {
+        imgWrapper.style.display = "none";
+        fileWrapper.style.display = "block";
+        titleInput.value = "";
+        categorySelect.selectedIndex = 0;
         submitInput.disabled = true;
     }
 };

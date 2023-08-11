@@ -41,26 +41,29 @@
                     </ul>
                 </nav>
             </header>
-            <aside id="modal" class="modal unauthenticated" aria-hidden="true" aria-labelledby="modal1">
-                <div id="modal1" class="modal-wrapper modal1 modal-stop">
+            <aside id="modal" class="modal unauthenticated" aria-hidden="true" aria-labelledby="modal-1">
+                <div id="modal-1" class="modal-wrapper modal-1 modal-stop">
                     <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
                     <h3>Galerie photo</h3>
                     <div class="modal-gallery"></div>
                     <hr />
-                    <input type="submit" value="Ajouter une photo" class="modal2-open" />
+                    <input type="submit" value="Ajouter une photo" class="modal-2-open" />
                     <button class="delete-btn">Supprimer la galerie</button>
                 </div>
-                <div id="modal2" class="modal-wrapper modal2 modal-stop">
+                <div id="modal-2" class="modal-wrapper modal-2 modal-stop">
                     <div class="modal-header">
-                        <button class="modal1-back"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button class="modal-1-back"><i class="fa-solid fa-arrow-left"></i></button>
                         <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                     <h3>Ajout photo</h3>
-                    <div class="submit-file">
-                        <i class="fa-sharp fa-regular fa-image"></i>
-                        <label for="file" class="custom-file-input">+ Ajouter photo</label>
-                        <input type="file" id="file" accept=".jpg, .png" />
-                        <label for="file">jpg, png : 4mo max</label>
+                    <div class="file-submit">
+                        <div class="img-wrapper"></div>
+                        <div class="file-wrapper">
+                            <i class="fa-sharp fa-regular fa-image"></i>
+                            <label for="file" class="custom-file-input">+ Ajouter photo</label>
+                            <input type="file" id="file" accept=".jpg, .png" />
+                            <label for="file">jpg, png : 4mo max</label>
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <label for="title">Titre</label>
