@@ -1,16 +1,18 @@
 const galleryModal = document.querySelector(".modal-gallery");
-let modal = null;
-const focusableSelector = "button, input";
-let focusablesElements = [];
-let previouslyFocusedElement = null;
 const modal1 = document.querySelector("aside div:nth-child(1)");
 const modal2 = document.querySelector("aside div:nth-child(2)");
 const submitInput = document.getElementById("submit");
+const fileInput = document.getElementById("file");
 const titleInput = document.getElementById("title");
 const categorySelect = document.getElementById("category");
-const fileInput = document.getElementById("file");
 const fileWrapper = document.querySelector(".file-wrapper");
 const imgWrapper = document.querySelector(".img-wrapper");
+
+let modal = null; // Initialisation de la variable pour la modal active
+
+const focusableSelector = "button, input";
+let focusablesElements = [];
+let previouslyFocusedElement = null;
 
 const openModal = () => {
     modal = document.querySelector(".modal");
@@ -19,59 +21,81 @@ const openModal = () => {
         createWorkElement(work, galleryModal);
     });
 
-    focusablesElements = Array.from(modal.querySelectorAll(focusableSelector));
+    focusablesElements = Array.from(modal.querySelectorAll(focusableSelector)); // Sélection des éléments focusables
+
     modal.style.display = "flex";
     modal1.style.display = "flex";
     modal2.style.display = "none";
+
+    // Gestion de l'accessibilité
     previouslyFocusedElement = document.querySelector(":focus");
     modal.removeAttribute("aria-hidden", "false");
     modal.setAttribute("aria-modal", "true");
+
+    // Ajout des écouteurs d'événements
     modal.addEventListener("click", closeModal);
     modal.querySelectorAll(".modal-close").forEach((element) => element.addEventListener("click", closeModal));
     modal.querySelectorAll(".modal-stop").forEach((element) => element.addEventListener("click", stopPropagation));
+
+    // Changement entre modal1 et modal2
     modal.querySelector(".modal-2-open").addEventListener("click", () => {
         modal1.style.display = "none";
         modal2.style.display = "flex";
+        // Mise en place de l'accessibilité pour modal2
         modal.setAttribute("aria-labelledby", "modal-2");
         modal.querySelectorAll(".modal-wrapper").forEach((element) => element.classList.add("no-animation"));
         focusablesElements = Array.from(modal2.querySelectorAll(focusableSelector));
         focusablesElements[0].focus();
     });
+
+    // Retour à modal1 depuis modal2
     modal.querySelector(".modal-1-back").addEventListener("click", () => {
         modal2.style.display = "none";
         modal1.style.display = "flex";
+        // Mise en place de l'accessibilité pour modal1
         modal.setAttribute("aria-labelledby", "modal-1");
         modal.querySelectorAll(".modal-wrapper").forEach((element) => element.classList.add("no-animation"));
         focusablesElements = Array.from(modal1.querySelectorAll(focusableSelector));
         modal.querySelector(".modal-2-open").focus();
-        resetSubmitFile();
+        resetFileSubmit();
     });
     focusablesElements[0].focus();
 };
 
 const closeModal = () => {
     if (modal === null) return;
+
+    // Restauration du focus précédent
     if (previouslyFocusedElement !== null) previouslyFocusedElement.focus();
+
+    // Gestion de l'accessibilité
     modal.setAttribute("aria-hidden", "true");
     modal.removeAttribute("aria-modal");
+
+    // Retrait des écouteurs d'événements
     modal.removeEventListener("click", closeModal);
     modal.querySelector(".modal-close").removeEventListener("click", closeModal);
     modal.querySelector(".modal-stop").removeEventListener("click", stopPropagation);
     modal.querySelectorAll(".modal-wrapper").forEach((element) => element.classList.remove("no-animation"));
+
+    // Animation de sortie et nettoyage
     const hideModal = () => {
         modal.style.display = "none";
         modal1.style.display = "none";
         modal2.style.display = "none";
         modal.removeEventListener("animationend", hideModal);
         galleryModal.innerHTML = "";
-        resetSubmitFile();
+        resetFileSubmit();
     };
     modal.addEventListener("animationend", hideModal);
 };
 
+// Arrêt de la propagation des événements
 const stopPropagation = (e) => {
     e.stopPropagation();
 };
+
+// Gestion du focus au sein de la modal
 const focusInModal = (e) => {
     e.preventDefault();
     let index = focusablesElements.findIndex((f) => f === modal.querySelector(":focus"));
@@ -100,6 +124,7 @@ const checkFormValidity = () => {
 
     const isFormValid = isTitleValid && isCategoryValid && isFileValid;
 
+    // Affichage de l'aperçu de l'image
     if (isFileValid) {
         const imgPreview = `<img src="${URL.createObjectURL(file)}" alt="Image preview" />`;
         imgWrapper.style.display = "flex";
@@ -114,7 +139,7 @@ const checkFormValidity = () => {
     }
 };
 
-const resetSubmitFile = () => {
+const resetFileSubmit = () => {
     if (modal2.style.display !== "flex") {
         imgWrapper.style.display = "none";
         fileWrapper.style.display = "block";
@@ -124,8 +149,10 @@ const resetSubmitFile = () => {
     }
 };
 
+// Ouverture de la modal depuis le bouton "edit-gallery"
 document.querySelector(".edit-gallery").addEventListener("click", openModal);
 
+// Gestion pour la touche "Escape" et la navigation dans la modal
 window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" || e.key === "Esc") {
         closeModal(e);
@@ -135,6 +162,7 @@ window.addEventListener("keydown", (e) => {
     }
 });
 
+// Suppression d'une œuvre
 galleryModal.addEventListener("click", (e) => {
     if (e.target.classList.contains("fa-trash-can")) {
         const figure = e.target.closest("figure");
@@ -167,6 +195,7 @@ galleryModal.addEventListener("click", (e) => {
     }
 });
 
+// Ajout d'une œuvre
 submitInput.addEventListener("click", () => {
     const file = fileInput.files[0];
     const title = titleInput.value;
@@ -202,8 +231,10 @@ submitInput.addEventListener("click", () => {
         });
 });
 
+// Vérification de la validité du formulaire lors des modifications
 fileInput.addEventListener("change", checkFormValidity);
 titleInput.addEventListener("input", checkFormValidity);
 categorySelect.addEventListener("change", checkFormValidity);
 
+// Initialisation de la validité du formulaire lors du chargement de la page
 checkFormValidity();
