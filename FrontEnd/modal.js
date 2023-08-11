@@ -63,7 +63,6 @@ const closeModal = () => {
         modal1.style.display = "none";
         modal2.style.display = "none";
         modal.removeEventListener("animationend", hideModal);
-        modal = null;
         galleryModal.innerHTML = "";
         resetSubmitFile();
     };
