@@ -7,10 +7,11 @@ const titleInput = document.getElementById("title");
 const categorySelect = document.getElementById("category");
 const fileWrapper = document.querySelector(".file-wrapper");
 const imgWrapper = document.querySelector(".img-wrapper");
+const label = document.querySelector('label[for="file"]');
 
 let modal = null; // Initialisation de la variable pour la modal active
 
-const focusableSelector = "button, input";
+const focusableSelector = 'button, .modal-2-open, input[type="text"], select, .custom-file-input';
 let focusablesElements = [];
 let previouslyFocusedElement = null;
 
@@ -21,7 +22,7 @@ const openModal = () => {
         createWorkElement(work, galleryModal);
     });
 
-    focusablesElements = Array.from(modal.querySelectorAll(focusableSelector)); // Sélection des éléments focusables
+    focusablesElements = Array.from(modal1.querySelectorAll(focusableSelector)); // Sélection des éléments focusables
 
     modal.style.display = "flex";
     modal1.style.display = "flex";
@@ -126,16 +127,31 @@ const checkFormValidity = () => {
 
     // Affichage de l'aperçu de l'image
     if (isFileValid) {
+        const labelIndex = focusablesElements.indexOf(label);
         const imgPreview = `<img src="${URL.createObjectURL(file)}" alt="Image preview" />`;
         imgWrapper.style.display = "flex";
         fileWrapper.style.display = "none";
         imgWrapper.innerHTML = imgPreview;
+        if (focusablesElements.includes(label)) {
+            focusablesElements.splice(labelIndex, 1);
+        } else {
+            focusablesElements.push(label);
+        }
     }
 
     if (isFormValid) {
         submitInput.disabled = false;
+
+        if (!focusablesElements.includes(submitInput)) {
+            focusablesElements.push(submitInput);
+        }
     } else {
         submitInput.disabled = true;
+
+        const submitIndex = focusablesElements.indexOf(submitInput);
+        if (focusablesElements.includes(submitInput)) {
+            focusablesElements.splice(submitIndex, 1);
+        }
     }
 };
 
@@ -143,6 +159,7 @@ const resetFileSubmit = () => {
     if (modal2.style.display !== "flex") {
         imgWrapper.style.display = "none";
         fileWrapper.style.display = "block";
+        fileInput.value = "";
         titleInput.value = "";
         categorySelect.selectedIndex = 0;
         submitInput.disabled = true;
@@ -158,7 +175,15 @@ window.addEventListener("keydown", (e) => {
         closeModal(e);
     }
     if (e.key === "Tab" && modal !== null) {
-        focusInModal(e);
+        if (modal.contains(document.activeElement)) {
+            focusInModal(e);
+        }
+    }
+});
+
+label.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        fileInput.click();
     }
 });
 
@@ -189,7 +214,7 @@ galleryModal.addEventListener("click", (e) => {
                 }
             })
             .catch((error) => {
-                console.error("Error:", error.message);
+                console.error(error.message);
                 alert("Erreur lors de la suppression de l'élément");
             });
     }
@@ -226,7 +251,7 @@ submitInput.addEventListener("click", () => {
             createWorkElement(data, gallerySection);
         })
         .catch((error) => {
-            console.error("Error:", error.message);
+            console.error(error.message);
             alert("Erreur lors de l'ajout de l'élément");
         });
 });

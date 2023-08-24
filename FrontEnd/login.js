@@ -41,7 +41,7 @@ loginForm.addEventListener("submit", (event) => {
             window.location.href = "index.html";
         })
         .catch((error) => {
-            console.error("Error:", error.message);
+            console.error(error.message);
             alert("Erreur de connexion. Veuillez vérifier vos identifiants.");
         });
 });
